@@ -1,0 +1,77 @@
+<diagram program="umletino" version="15.1"><zoom_level>13</zoom_level><element><id>UMLActor</id><coordinates><x>26</x><y>26</y><w>208</w><h>221</h></coordinates><panel_attributes>Client
+Insomnia
+-
+Consume microservicios 
+desde el gateway
+fg=#721d77
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>429</x><y>78</y><w>273</w><h>156</h></coordinates><panel_attributes>*&lt;&lt;Spring Cloud Gateway&gt;&gt;*
+microservicegateway
+--
+port:8888
+--
+Routes:
+- /pets/** 
+- /adopters/**
+- /adoptions/**
+bg=#DBEAFE</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>169</x><y>130</y><w>286</w><h>52</h></coordinates><panel_attributes>lt=&lt;-
+HTTP</panel_attributes><additional_attributes>10;20;200;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>429</x><y>286</y><w>273</w><h>156</h></coordinates><panel_attributes>*&lt;&lt;Eureka&gt;&gt;*
+microserviceeureka
+--
+port:9999
+--
+Registro y descubrimiento
+de microservicios
+bg=#DBEAFE</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>507</x><y>221</y><w>65</w><h>91</h></coordinates><panel_attributes>lt=&lt;-
+lb://</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>572</x><y>221</y><w>195</w><h>91</h></coordinates><panel_attributes>lt=&lt;-
+microservice registry</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>78</x><y>546</y><w>273</w><h>156</h></coordinates><panel_attributes>*&lt;&lt;Microservice&gt;&gt;*
+microservicepet
+--
+Endpoint base: /pets
+--
+Responsabilidad: 
+Administra mascotas y estado
+de adopción
+
+bg=#DBEAFE</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>429</x><y>546</y><w>273</w><h>156</h></coordinates><panel_attributes>*&lt;&lt;Microservice&gt;&gt;*
+microserviceadopter
+--
+Endpoint base: /adopters
+--
+Responsabilidad:
+Administra adoptantes
+bg=#DBEAFE</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>793</x><y>546</y><w>273</w><h>195</h></coordinates><panel_attributes>*&lt;&lt;Microservice&gt;&gt;*
+microserviceadoptionrequest
+--
+Endpoint base: /adoptions
+--
+Responsabilidad:
+Crea solicitudes de adopción:
+--
+Usa:
+*microserviceadopter*
+*microservicepet*
+
+bg=#DBEAFE</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>182</x><y>429</y><w>403</w><h>143</h></coordinates><panel_attributes>lt=&lt;-
+microservice registry</panel_attributes><additional_attributes>290;10;290;50;10;50;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>546</x><y>429</y><w>39</w><h>143</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>546</x><y>429</y><w>416</w><h>143</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;50;300;50;300;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>988</x><y>273</y><w>273</w><h>156</h></coordinates><panel_attributes>*&lt;&lt;ConfigServer&gt;&gt;*
+microserviceconfig
+--
+port:7777
+--
+Responsabilidad:
+Entrega de configuración 
+centralizada
+bg=#DBEAFE</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>689</x><y>143</y><w>325</w><h>221</h></coordinates><panel_attributes>lt=&lt;-
+send configuration</panel_attributes><additional_attributes>10;10;110;10;110;150;230;150</additional_attributes></element><element><id>Relation</id><coordinates><x>195</x><y>416</y><w>1092</w><h>481</h></coordinates><panel_attributes>lt=&lt;-
+send config</panel_attributes><additional_attributes>10;220;10;350;820;350;820;10</additional_attributes></element><element><id>Relation</id><coordinates><x>546</x><y>416</y><w>689</w><h>429</h></coordinates><panel_attributes>lt=&lt;-
+send config</panel_attributes><additional_attributes>10;220;10;310;510;310;510;10</additional_attributes></element><element><id>Relation</id><coordinates><x>923</x><y>416</y><w>260</w><h>390</h></coordinates><panel_attributes>lt=&lt;-
+cbase=l
+send config</panel_attributes><additional_attributes>10;250;10;280;180;280;180;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>975</x><y>39</y><w>338</w><h>156</h></coordinates><panel_attributes>*&lt;&lt;Github repository&gt;&gt;*
+microservicesconfig
+--
+Archivos:
+- microservicepet.properties
+- microserviceadopter.properties
+- microservicegateway.properties
+- microserviceadoptionrequest.properties
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1105</x><y>182</y><w>104</w><h>117</h></coordinates><panel_attributes>lt=&lt;-
+git clone</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element></diagram>

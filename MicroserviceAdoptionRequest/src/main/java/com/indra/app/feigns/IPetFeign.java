@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.indra.app.entities.AdoptionStatus;
 import com.indra.app.entities.Pet;
 
-@FeignClient(name="microservicepet", url="http://localhost:9091")
+//without eureka
+//@FeignClient(name="microservicepet", url="http://localhost:9091")
+
+//with eureka
+@FeignClient(name="microservicepet")
 public interface IPetFeign {
 	
 	@GetMapping("/pets/id")
